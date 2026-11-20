@@ -61,7 +61,7 @@ export default function NotificationsScreen() {
         ListEmptyComponent={
           <View style={styles.empty}>
             <View style={styles.emptyIconCircle}>
-              <Ionicons name="notifications-off-outline" size={36} color={THEME.colors.primary} />
+              <Ionicons name="notifications-off-outline" size={36} color={THEME.colors.primaryDark} />
             </View>
             <Text style={styles.emptyText}>No notifications yet.</Text>
           </View>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   cardUnread: {
     backgroundColor: THEME.colors.primarySoft,
-    borderColor: '#99F6E4',
+    borderColor: '#B8F4E8',
   },
   header: {
     flexDirection: 'row',

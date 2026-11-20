@@ -66,7 +66,7 @@ export default function PatientProfileScreen() {
 
   const handleDeleteRequest = () => {
     alert(
-      'Account deletion & health record purge requested. Standard medical retention period rules apply.'
+      'Account deletion requested. Your records are kept only as long as the law requires.'
     );
   };
 
@@ -86,7 +86,7 @@ export default function PatientProfileScreen() {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Medical & Residence Details</Text>
         <Text style={styles.sectionSubtitle}>
-          These details are shared with attending specialists during home visits:
+          Your doctor sees this before a home visit.
         </Text>
 
         <CountryChips value={country.code} onChange={handleCountryChange} label="Country of Residence" />
@@ -150,10 +150,10 @@ export default function PatientProfileScreen() {
 
       {/* Privacy, Regulatory & Data Protection (SRS NFR-3.1, NFR-3.2) */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Privacy & Health Data Rights</Text>
+        <Text style={styles.sectionTitle}>Privacy & Your Data</Text>
         <Text style={styles.legalNotice}>
-          In compliance with {country.dataProtectionLaw}, your medical records are accessible only to
-          you and authorized doctors with whom you have active or completed appointments.
+          Only you and doctors with your visits can see your records, as required by{' '}
+          {country.dataProtectionLaw}.
         </Text>
 
         <View style={styles.dataButtons}>
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 24,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   userName: {
     fontSize: 18,

@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   badgeText: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 9,
     fontWeight: '800',
   },
@@ -244,19 +244,19 @@ const styles = StyleSheet.create({
   },
   pdfHeader: {
     borderBottomWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: '#E5E7EB',
     paddingBottom: 8,
     marginBottom: 8,
   },
   pdfWatermark: {
     fontSize: 9,
     fontWeight: '800',
-    color: '#0F766E',
+    color: '#183B45',
     letterSpacing: 0.5,
   },
   pdfDocNum: {
     fontSize: 9,
-    color: '#94A3B8',
+    color: '#9AA5B1',
     marginTop: 2,
   },
   pdfBody: {
@@ -265,23 +265,23 @@ const styles = StyleSheet.create({
   pdfHeadline: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#0F172A',
+    color: '#183B45',
     marginBottom: 4,
   },
   pdfLine: {
     fontSize: 10,
-    color: '#475569',
+    color: '#718096',
     lineHeight: 14,
   },
   pdfSeparator: {
     height: 1,
-    backgroundColor: '#F1F5F9',
+    backgroundColor: '#F5F9F8',
     marginVertical: 4,
   },
   pdfSignature: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#0F766E',
+    color: '#183B45',
     marginTop: 6,
     fontStyle: 'italic',
   },

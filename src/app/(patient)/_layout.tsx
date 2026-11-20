@@ -11,7 +11,7 @@ export default function PatientTabsLayout() {
   if (!isAuthorised) {
     return (
       <View style={styles.loading}>
-        <ActivityIndicator size="large" color={THEME.colors.primary} />
+        <ActivityIndicator size="large" color={THEME.colors.primaryDark} />
       </View>
     );
   }
@@ -19,7 +19,7 @@ export default function PatientTabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: THEME.colors.primary,
+        tabBarActiveTintColor: THEME.colors.primaryDark,
         tabBarInactiveTintColor: THEME.colors.textMuted,
         tabBarStyle: {
           backgroundColor: THEME.colors.surface,

@@ -1,5 +1,5 @@
-// Centralized configuration and design system tokens for HomeCare
-// HomeCare operates across the East African Community: Rwanda, Kenya, Uganda,
+// Centralized configuration and design system tokens for MEDS Healthcare
+// MEDS Healthcare operates across the East African Community: Rwanda, Kenya, Uganda,
 // Tanzania, Burundi and South Sudan. Every market has its own currency, emergency
 // number, medical regulator and coverage districts.
 
@@ -169,59 +169,79 @@ export const ALL_DISTRICTS = COUNTRY_CODES.flatMap((code) => COUNTRY_CONFIGS[cod
 export const COUNTRY_CODES_LABEL = COUNTRY_LIST.map((c) => c.name).join(', ');
 
 export const APP_CONFIG = {
-  appName: 'HomeCare',
+  appName: 'MEDS Healthcare',
   appVersion: '1.0.0',
   tagline: 'Certified Doctor Home Visits Across East Africa',
   supportedCountries: COUNTRY_CODES,
-  supportEmail: 'support@homecare.africa',
+  supportEmail: 'support@medshealthline.com',
   supportPhone: '+250 788 123 456',
   demoOtpCode: '123456',
   coverageDistricts: ALL_DISTRICTS,
   defaultCountry: DEFAULT_COUNTRY,
   // Generic emergency disclaimer used when country is unknown
   emergencyDisclaimer:
-    'HomeCare is not an emergency service. In life-threatening emergencies, dial your national emergency number immediately.',
+    'MEDS is not an emergency service. For emergencies, call your national emergency number.',
 };
+
+// MEDS HEALTHCARE official brand palette
+// Primary: Healthcare Mint #72E8D2 · Secondary: MEDS Pink #E24065
+export const MEDS_COLORS = {
+  primary: '#72E8D2',
+  secondary: '#E24065',
+  dark: '#183B45',
+  white: '#FFFFFF',
+  background: '#F0FCF9',
+  secondaryBackground: '#FFF2F5',
+  textPrimary: '#263238',
+  textSecondary: '#718096',
+  border: '#E5E7EB',
+  card: '#FFFFFF',
+} as const;
 
 export const THEME = {
   colors: {
-    // Primary palette: Deep trustworthy teal & healthcare blue
-    primary: '#0F766E', // Tailwind teal-700
-    primaryDark: '#115E59', // teal-800
-    primaryLight: '#14B8A6', // teal-500
-    primarySoft: '#F0FDFA', // teal-50
+    // Primary palette: MEDS Healthcare Mint + deep navy
+    primary: '#72E8D2', // Healthcare Mint
+    primaryDark: '#183B45', // Dark Navy
+    primaryLight: '#9FF3E4',
+    primarySoft: '#F0FCF9', // Light Mint Background
+    onPrimary: '#183B45', // Text/icons that sit on mint fills
 
-    // Accent: Restrained calming blue & green
-    accent: '#0284C7', // sky-600
-    accentSoft: '#F0F9FF',
+    // Secondary: MEDS Pink
+    secondary: '#E24065',
+    secondarySoft: '#FFF2F5',
+    accent: '#E24065', // MEDS Pink
+    accentSoft: '#FFF2F5',
+
     success: '#16A34A', // green-600
     successSoft: '#DCFCE7', // green-100
     warning: '#D97706', // amber-600
     warningSoft: '#FEF3C7', // amber-100
     error: '#DC2626', // red-600
     errorSoft: '#FEE2E2', // red-100
-    info: '#2563EB', // blue-600
+    info: '#183B45', // dark navy
 
     // Neutrals
-    background: '#F8FAFC', // slate-50
+    background: '#F0FCF9', // Light Mint Background
     surface: '#FFFFFF',
-    surfaceSubtle: '#F1F5F9', // slate-100
-    border: '#E2E8F0', // slate-200
-    borderLight: '#F1F5F9',
+    surfaceSubtle: '#F5F9F8',
+    border: '#E5E7EB',
+    borderLight: '#F3F6F5',
+    dark: '#183B45',
 
     // Text
-    textPrimary: '#0F172A', // slate-900
-    textSecondary: '#475569', // slate-600
-    textMuted: '#94A3B8', // slate-400
+    textPrimary: '#263238',
+    textSecondary: '#718096',
+    textMuted: '#9AA5B1',
     textWhite: '#FFFFFF',
 
     // Status Badges
     badgePendingBg: '#FEF3C7',
     badgePendingText: '#92400E',
-    badgeConfirmedBg: '#DBEAFE',
-    badgeConfirmedText: '#1E40AF',
-    badgeActiveBg: '#E0E7FF',
-    badgeActiveText: '#3730A3',
+    badgeConfirmedBg: '#D8FBF3',
+    badgeConfirmedText: '#0B5E55',
+    badgeActiveBg: '#FFE4EA',
+    badgeActiveText: '#B31E45',
     badgeCompletedBg: '#DCFCE7',
     badgeCompletedText: '#166534',
     badgeCancelledBg: '#FEE2E2',
@@ -262,14 +282,14 @@ export const THEME = {
   },
   shadows: {
     card: {
-      shadowColor: '#0F172A',
+      shadowColor: '#183B45',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.05,
       shadowRadius: 6,
       elevation: 2,
     },
     floating: {
-      shadowColor: '#0F172A',
+      shadowColor: '#183B45',
       shadowOffset: { width: 0, height: 6 },
       shadowOpacity: 0.1,
       shadowRadius: 12,

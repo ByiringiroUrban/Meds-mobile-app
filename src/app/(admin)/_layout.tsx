@@ -12,7 +12,7 @@ export default function AdminLayout() {
   if (!isAuthorised) {
     return (
       <View style={styles.loading}>
-        <ActivityIndicator size="large" color={THEME.colors.primary} />
+        <ActivityIndicator size="large" color={THEME.colors.primaryDark} />
       </View>
     );
   }
@@ -24,7 +24,7 @@ export default function AdminLayout() {
         contentStyle: { backgroundColor: THEME.colors.background },
       }}
     >
-      <Stack.Screen name="index" options={{ title: 'HomeCare Platform Administration', headerShown: false }} />
+      <Stack.Screen name="index" options={{ title: 'MEDS Healthcare Platform Administration', headerShown: false }} />
     </Stack>
   );
 }

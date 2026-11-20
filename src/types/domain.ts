@@ -1,4 +1,4 @@
-// Domain Entities for HomeCare Mobile & Web Application
+// Domain Entities for MEDS Healthcare Mobile & Web Application
 // Supports East African markets: Rwanda (RWF), Kenya (KES), Tanzania (TZS),
 // Uganda (UGX), Burundi (BIF) and South Sudan (SSP)
 // Sourced from SRS Version 1.0 Draft

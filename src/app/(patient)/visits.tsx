@@ -88,7 +88,7 @@ export default function PatientVisitsScreen() {
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <View style={styles.emptyIconCircle}>
-              <Ionicons name="calendar-outline" size={38} color={THEME.colors.primary} />
+              <Ionicons name="calendar-outline" size={38} color={THEME.colors.primaryDark} />
             </View>
             <Text style={styles.emptyTitle}>No consultations found</Text>
             <Text style={styles.emptyText}>

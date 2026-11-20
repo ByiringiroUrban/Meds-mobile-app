@@ -50,7 +50,7 @@ export const Button: React.FC<ButtonProps> = ({
       {loading ? (
         <ActivityIndicator
           size="small"
-          color={variant === 'outline' || variant === 'ghost' ? THEME.colors.primary : THEME.colors.textWhite}
+          color={variant === 'outline' || variant === 'ghost' ? THEME.colors.primaryDark : THEME.colors.dark}
         />
       ) : (
         <>
@@ -91,6 +91,8 @@ const styles = StyleSheet.create({
   },
   secondary: {
     backgroundColor: THEME.colors.accentSoft,
+    borderWidth: 1,
+    borderColor: '#FBD0DA',
   },
   outline: {
     backgroundColor: 'transparent',
@@ -120,13 +122,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   text_primary: {
-    color: THEME.colors.textWhite,
+    color: THEME.colors.dark,
   },
   text_secondary: {
     color: THEME.colors.accent,
   },
   text_outline: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   text_danger: {
     color: THEME.colors.textWhite,

@@ -149,12 +149,11 @@ export default function VisitDetailScreen() {
       {canJoinVideo && (
         <Card style={styles.videoCard}>
           <View style={styles.videoHeaderRow}>
-            <Ionicons name="videocam" size={18} color={THEME.colors.primary} />
+            <Ionicons name="videocam" size={18} color={THEME.colors.primaryDark} />
             <Text style={styles.videoTitle}>Online video consultation</Text>
           </View>
           <Text style={styles.videoSub}>
-            Meet your doctor face to face in the secure HomeCare meeting room. Camera and
-            microphone are requested when you join.
+            Meet your doctor in a secure video call. We will ask for camera and microphone access.
           </Text>
           <Button
             title="Join Video Consultation"
@@ -232,7 +231,7 @@ export default function VisitDetailScreen() {
                   ]}
                 >
                   {isFinished ? (
-                    <Ionicons name="checkmark" size={14} color="#FFF" />
+                    <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />
                   ) : (
                     <Text style={styles.timelineDotText}>{idx + 1}</Text>
                   )}
@@ -256,7 +255,7 @@ export default function VisitDetailScreen() {
       <Card style={styles.detailsCard}>
         <Text style={styles.detailsCardTitle}>Residence Visit Address</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Ionicons name="location-outline" size={15} color={THEME.colors.primary} style={{ marginRight: 4 }} />
+          <Ionicons name="location-outline" size={15} color={THEME.colors.primaryDark} style={{ marginRight: 4 }} />
           <Text style={styles.addressLine}>{visit.visitAddress}</Text>
         </View>
         <Text style={styles.districtLine}>District: {visit.district}</Text>
@@ -301,7 +300,7 @@ export default function VisitDetailScreen() {
         <View style={styles.lockNotice}>
           <Ionicons name="lock-closed" size={15} color={THEME.colors.textSecondary} style={{ marginRight: 6 }} />
           <Text style={styles.lockNoticeText}>
-            Cancellation and rescheduling are locked because the doctor is en route or at your residence.
+            You can no longer cancel — the doctor is already on the way.
           </Text>
         </View>
       )}
@@ -449,7 +448,7 @@ const styles = StyleSheet.create({
   visitCode: {
     fontSize: 11,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     letterSpacing: 0.5,
   },
   scheduledHero: {
@@ -633,8 +632,8 @@ const styles = StyleSheet.create({
   },
   modalCard: {
     marginTop: THEME.spacing.md,
-    backgroundColor: '#F8FAFC',
-    borderColor: '#94A3B8',
+    backgroundColor: '#F0FCF9',
+    borderColor: '#9AA5B1',
   },
   modalTitle: {
     fontSize: 15,
@@ -661,7 +660,7 @@ const styles = StyleSheet.create({
   },
   videoCard: {
     backgroundColor: THEME.colors.primarySoft,
-    borderColor: '#99F6E4',
+    borderColor: '#B8F4E8',
     marginBottom: THEME.spacing.md,
   },
   videoHeaderRow: {

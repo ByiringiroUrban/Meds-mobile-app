@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 26,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   name: {
     fontSize: 18,

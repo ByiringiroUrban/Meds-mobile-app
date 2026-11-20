@@ -27,35 +27,40 @@ export default function RegisterDoctorScreen() {
   const [licenseNumber, setLicenseNumber] = useState('');
   const [qualifications, setQualifications] = useState('');
   const [experienceYears, setExperienceYears] = useState('5');
-  const [selectedDistricts, setSelectedDistricts] = useState<string[]>([country.districts[0]]);
+  const [coverageLocations, setCoverageLocations] = useState<string[]>([]);
+  const [locationDraft, setLocationDraft] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleCountryChange = (code: SupportedCountry) => {
     setCountry(code);
     const next = getCountryConfig(code);
-    setSelectedDistricts([next.districts[0]]);
+    setCoverageLocations([]);
     if (!phone.trim() || phone.trim().length <= 6) setPhone(next.phonePrefix);
   };
 
-  const toggleDistrict = (district: string) => {
-    if (selectedDistricts.includes(district)) {
-      setSelectedDistricts(selectedDistricts.filter((d) => d !== district));
-    } else {
-      setSelectedDistricts([...selectedDistricts, district]);
-    }
+  const removeCoverageLocation = (location: string) => {
+    setCoverageLocations(coverageLocations.filter((d) => d !== location));
+  };
+
+  const addCoverageLocation = () => {
+    const next = locationDraft.trim();
+    if (!next) return;
+    const alreadySelected = coverageLocations.some((d) => d.toLowerCase() === next.toLowerCase());
+    if (!alreadySelected) setCoverageLocations([...coverageLocations, next]);
+    setLocationDraft('');
   };
 
   const handleRegister = async () => {
     if (!name.trim()) return setErrorMsg('Doctor full name is required.');
     if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email.trim()))
-      return setErrorMsg('A valid work email is required — your verification code is emailed there.');
+      return setErrorMsg('Enter a valid work email — we send your code there.');
     if (password.length < 8)
       return setErrorMsg('Password must be at least 8 characters.');
     if (!licenseNumber.trim())
       return setErrorMsg(`${country.regulatoryBody} license number is required.`);
-    if (selectedDistricts.length === 0)
-      return setErrorMsg(`Please choose at least one ${country.name} coverage district.`);
+    if (coverageLocations.length === 0)
+      return setErrorMsg('Please add at least one coverage location.');
 
     setErrorMsg('');
     setLoading(true);
@@ -69,7 +74,7 @@ export default function RegisterDoctorScreen() {
         licenseNumber: licenseNumber.trim(),
         qualifications: qualifications.split(',').map((q) => q.trim()).filter(Boolean),
         experienceYears: parseInt(experienceYears, 10) || 1,
-        coverageDistricts: selectedDistricts,
+        coverageDistricts: coverageLocations,
         country: country.code,
       });
 
@@ -91,10 +96,9 @@ export default function RegisterDoctorScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Join as Specialist Doctor</Text>
+        <Text style={styles.title}>Join as a Doctor</Text>
         <Text style={styles.subtitle}>
-          Provide residential medical consultations in {country.capitalCity} and across{' '}
-          {country.name}. Professional credentials are authenticated before public listing.
+          Home visits across {country.name}. We check your license before you go live.
         </Text>
       </View>
 
@@ -169,37 +173,60 @@ export default function RegisterDoctorScreen() {
         hint="Minimum 8 characters"
       />
 
-      {/* Coverage Districts */}
-      <View style={styles.districtSection}>
-        <Text style={styles.sectionLabel}>{country.name} Coverage Districts</Text>
-        <View style={styles.districtChips}>
-          {country.districts.map((d) => {
-            const isSelected = selectedDistricts.includes(d);
-            return (
+      {/* Coverage Locations (typed by the doctor) */}
+      <View style={styles.coverageSection}>
+        <Text style={styles.sectionLabel}>Coverage Locations</Text>
+
+        {coverageLocations.length > 0 && (
+          <View style={styles.coverageChips}>
+            {coverageLocations.map((d) => (
               <Pressable
                 key={d}
-                onPress={() => toggleDistrict(d)}
-                style={[styles.districtChip, isSelected && styles.districtChipActive]}
+                onPress={() => removeCoverageLocation(d)}
+                style={[styles.coverageChip, styles.coverageChipActive]}
+                accessibilityRole="button"
+                accessibilityLabel={`Remove ${d}`}
               >
-                <View style={styles.chipInner}>
-                  <Ionicons
-                    name={isSelected ? 'checkmark' : 'add'}
-                    size={14}
-                    color={isSelected ? '#FFF' : THEME.colors.textSecondary}
-                    style={{ marginRight: 4 }}
-                  />
-                  <Text style={[styles.districtText, isSelected && styles.districtTextActive]}>
-                    {d}
-                  </Text>
+                <View style={styles.coverageChipInner}>
+                  <Ionicons name="location" size={14} color={THEME.colors.dark} style={{ marginRight: 4 }} />
+                  <Text style={[styles.coverageChipText, styles.coverageChipTextActive]}>{d}</Text>
+                  <Ionicons name="close" size={14} color={THEME.colors.dark} style={{ marginLeft: 4 }} />
                 </View>
               </Pressable>
-            );
-          })}
+            ))}
+          </View>
+        )}
+
+        <View style={styles.coverageInputRow}>
+          <InputField
+            label="Add your coverage location"
+            placeholder="e.g. Gasabo, Bugesera, Nyamirambo"
+            value={locationDraft}
+            onChangeText={setLocationDraft}
+            onSubmitEditing={addCoverageLocation}
+            returnKeyType="done"
+            autoCapitalize="words"
+            containerStyle={styles.coverageInput}
+          />
+          <Pressable
+            onPress={addCoverageLocation}
+            disabled={!locationDraft.trim()}
+            style={[styles.addLocationBtn, !locationDraft.trim() && styles.addLocationBtnDisabled]}
+            accessibilityRole="button"
+            accessibilityLabel="Add coverage location"
+          >
+            <Ionicons name="add" size={16} color={THEME.colors.dark} />
+            <Text style={styles.addLocationText}>Add</Text>
+          </Pressable>
         </View>
+
+        <Text style={styles.coverageHint}>
+          Add the districts, towns or neighbourhoods you can visit. Tap one to remove it.
+        </Text>
       </View>
 
       <Button
-        title="Submit Credentials for Review"
+        title="Submit for Review"
         onPress={handleRegister}
         loading={loading}
         size="lg"
@@ -242,7 +269,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
   },
-  districtSection: {
+  coverageSection: {
     marginBottom: THEME.spacing.lg,
   },
   sectionLabel: {
@@ -251,11 +278,48 @@ const styles = StyleSheet.create({
     color: THEME.colors.textPrimary,
     marginBottom: 8,
   },
-  districtChips: {
+  coverageChips: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 8,
+    marginBottom: 10,
   },
-  districtChip: {
+  coverageHint: {
+    fontSize: 11,
+    color: THEME.colors.textMuted,
+    marginTop: 6,
+    lineHeight: 16,
+  },
+  coverageInputRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: 8,
+    marginTop: 12,
+  },
+  coverageInput: {
+    flex: 1,
+    marginBottom: 0,
+  },
+  addLocationBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    height: 44,
+    paddingHorizontal: 14,
+    borderRadius: THEME.borderRadius.md,
+    backgroundColor: THEME.colors.primary,
+    borderWidth: 1,
+    borderColor: THEME.colors.primary,
+  },
+  addLocationBtnDisabled: {
+    opacity: 0.45,
+  },
+  addLocationText: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: THEME.colors.dark,
+  },
+  coverageChip: {
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: THEME.borderRadius.full,
@@ -263,21 +327,21 @@ const styles = StyleSheet.create({
     borderColor: THEME.colors.border,
     backgroundColor: THEME.colors.surface,
   },
-  chipInner: {
+  coverageChipInner: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  districtChipActive: {
+  coverageChipActive: {
     backgroundColor: THEME.colors.primary,
     borderColor: THEME.colors.primary,
   },
-  districtText: {
+  coverageChipText: {
     fontSize: 13,
     color: THEME.colors.textSecondary,
     fontWeight: '500',
   },
-  districtTextActive: {
-    color: '#FFF',
+  coverageChipTextActive: {
+    color: THEME.colors.dark,
     fontWeight: '700',
   },
   submitBtn: {

@@ -35,7 +35,7 @@ export default function RegisterPatientScreen() {
       return;
     }
     if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email.trim())) {
-      setErrorMsg('A valid email address is required — your verification code is emailed there.');
+      setErrorMsg('Enter a valid email — we send your code there.');
       return;
     }
     if (!phone.trim()) {
@@ -47,11 +47,11 @@ export default function RegisterPatientScreen() {
       return;
     }
     if (!consentTerms) {
-      setErrorMsg('You must agree to the Terms of Service to proceed.');
+      setErrorMsg('Please accept the Terms of Service.');
       return;
     }
     if (!consentHealthData) {
-      setErrorMsg('Explicit consent for processing health data is legally required for home consultations.');
+      setErrorMsg('Please agree to health data processing to continue.');
       return;
     }
 
@@ -87,7 +87,7 @@ export default function RegisterPatientScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>Create Patient Account</Text>
         <Text style={styles.subtitle}>
-          Sign up to request verified specialist visits and view examination records.
+          Book verified doctors and keep all your records in one place.
         </Text>
       </View>
 
@@ -140,7 +140,7 @@ export default function RegisterPatientScreen() {
           onPress={() => setConsentTerms(!consentTerms)}
         >
           <View style={[styles.checkbox, consentTerms && styles.checkboxActive]}>
-            {consentTerms && <Ionicons name="checkmark" size={14} color="#FFF" />}
+            {consentTerms && <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />}
           </View>
           <Text style={styles.checkboxLabel}>
             I agree to the <Text style={styles.linkText}>Terms of Service</Text> and Privacy Policy.
@@ -152,18 +152,17 @@ export default function RegisterPatientScreen() {
           onPress={() => setConsentHealthData(!consentHealthData)}
         >
           <View style={[styles.checkbox, consentHealthData && styles.checkboxActive]}>
-            {consentHealthData && <Ionicons name="checkmark" size={14} color="#FFF" />}
+            {consentHealthData && <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />}
           </View>
           <Text style={styles.checkboxLabel}>
-            I give explicit consent to the collection and processing of my sensitive medical
-            consultation records and laboratory test results as mandated under{' '}
+            I agree to MEDS storing my medical records and lab results, as required by{' '}
             {country.dataProtectionLaw}.
           </Text>
         </Pressable>
       </View>
 
       <Button
-        title="Continue to Email Verification"
+        title="Continue"
         onPress={handleRegister}
         loading={loading}
         size="lg"
@@ -231,7 +230,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.colors.primary,
   },
   checkMark: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 13,
     fontWeight: '800',
   },
@@ -242,7 +241,7 @@ const styles = StyleSheet.create({
     lineHeight: 17,
   },
   linkText: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   submitBtn: {

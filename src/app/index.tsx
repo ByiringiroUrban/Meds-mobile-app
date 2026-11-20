@@ -26,7 +26,7 @@ export default function IndexScreen() {
 
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color={THEME.colors.primary} />
+      <ActivityIndicator size="large" color={THEME.colors.primaryDark} />
     </View>
   );
 }

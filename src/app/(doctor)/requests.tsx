@@ -95,18 +95,18 @@ export default function DoctorRequestsScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.headerTitle}>Incoming Consultation Requests</Text>
+      <Text style={styles.headerTitle}>Visit Requests</Text>
       <Text style={styles.headerSubtitle}>
-        Review reported symptoms, visit location, and confirm or propose a new time.
+        Check the symptoms and address, then accept or suggest a new time.
       </Text>
 
       {pendingRequests.length === 0 ? (
         <Card style={styles.emptyCard}>
           <View style={styles.emptyIconCircle}>
-            <Ionicons name="mail-open-outline" size={36} color={THEME.colors.primary} />
+            <Ionicons name="mail-open-outline" size={36} color={THEME.colors.primaryDark} />
           </View>
           <Text style={styles.emptyTitle}>No pending visit requests</Text>
-          <Text style={styles.emptyText}>New booking requests from patients will appear here immediately.</Text>
+          <Text style={styles.emptyText}>New requests will show up here.</Text>
         </Card>
       ) : (
         pendingRequests.map((visit) => (
@@ -123,7 +123,7 @@ export default function DoctorRequestsScreen() {
             </View>
 
             <View style={styles.timeTag}>
-              <Ionicons name="calendar-outline" size={14} color={THEME.colors.primary} style={{ marginRight: 5 }} />
+              <Ionicons name="calendar-outline" size={14} color={THEME.colors.primaryDark} style={{ marginRight: 5 }} />
               <Text style={styles.timeTagText}>
                 Requested: {visit.scheduledDate} at {visit.scheduledTime}
               </Text>
@@ -131,7 +131,7 @@ export default function DoctorRequestsScreen() {
 
             {/* Address */}
             <View style={styles.infoRow}>
-              <Ionicons name="location-outline" size={16} color={THEME.colors.primary} style={{ marginRight: 6 }} />
+              <Ionicons name="location-outline" size={16} color={THEME.colors.primaryDark} style={{ marginRight: 6 }} />
               <Text style={styles.infoText}>
                 {visit.visitAddress} ({visit.district})
               </Text>
@@ -195,11 +195,11 @@ export default function DoctorRequestsScreen() {
         <Card style={styles.modalCard}>
           <Text style={styles.modalTitle}>Decline Visit Request</Text>
           <Text style={styles.modalSubtitle}>
-            Decline request for {selectedVisit.patientName} on {selectedVisit.scheduledDate}
+            {selectedVisit.patientName} · {selectedVisit.scheduledDate}
           </Text>
           <InputField
             label="Reason for Declining (Optional)"
-            placeholder="e.g. In an emergency surgery, outside coverage area, or fully booked."
+            placeholder="e.g. emergency, too far, fully booked"
             value={declineReason}
             onChangeText={setDeclineReason}
             multiline
@@ -224,9 +224,9 @@ export default function DoctorRequestsScreen() {
       {/* Alternative Time Modal */}
       {modalMode === 'alternative' && selectedVisit && (
         <Card style={styles.modalCard}>
-          <Text style={styles.modalTitle}>Propose Alternative Appointment Time</Text>
+          <Text style={styles.modalTitle}>Suggest a New Time</Text>
           <Text style={styles.modalSubtitle}>
-            Propose a different time slot for {selectedVisit.patientName}:
+            New time for {selectedVisit.patientName}:
           </Text>
 
           <InputField
@@ -243,7 +243,7 @@ export default function DoctorRequestsScreen() {
 
           <InputField
             label="Explanation Note for Patient"
-            placeholder="e.g. Earlier slot unavailable due to clinic round. Can visit at 11:00 AM."
+            placeholder="e.g. clinic round until 11:00 AM"
             value={altNote}
             onChangeText={setAltNote}
           />
@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
   },
   chipText: {
     fontSize: 10,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   actionsRow: {

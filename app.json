@@ -1,29 +1,29 @@
 {
   "expo": {
-    "name": "HomeCare",
-    "slug": "homecare",
-    "scheme": "homecare",
+    "name": "MEDS Healthcare",
+    "slug": "meds-healthcare",
+    "scheme": "meds",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/homecare-logo.png",
+      "image": "./assets/meds-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#F0FCF9"
     },
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSCameraUsageDescription": "HomeCare uses the camera for online video consultations with your doctor.",
-        "NSMicrophoneUsageDescription": "HomeCare uses the microphone so you can speak during online video consultations."
+        "NSCameraUsageDescription": "MEDS Healthcare uses the camera for online video consultations with your doctor.",
+        "NSMicrophoneUsageDescription": "MEDS Healthcare uses the microphone so you can speak during online video consultations."
       }
     },
     "android": {
       "permissions": ["CAMERA", "RECORD_AUDIO", "MODIFY_AUDIO_SETTINGS"],
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF",
-        "foregroundImage": "./assets/homecare-logo.png"
+        "foregroundImage": "./assets/icon.png"
       },
       "predictiveBackGestureEnabled": false
     },

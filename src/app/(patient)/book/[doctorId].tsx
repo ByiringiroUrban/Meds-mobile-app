@@ -177,7 +177,7 @@ export default function BookVisitScreen() {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>1. Select Date & Available Time Slot</Text>
         <Text style={styles.sectionSubtitle}>
-          Choose from doctor’s verified open windows or choose default:
+          Pick a time the doctor is free:
         </Text>
 
         <View style={styles.slotList}>
@@ -220,7 +220,7 @@ export default function BookVisitScreen() {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>2. Reason for Visit & Symptoms</Text>
         <Text style={styles.sectionSubtitle}>
-          Select common condition indicators to help the doctor prepare equipment:
+          Pick what you feel so the doctor can prepare.
         </Text>
 
         <View style={styles.symptomsGrid}>
@@ -236,7 +236,7 @@ export default function BookVisitScreen() {
                   <Ionicons
                     name={isSelected ? 'checkmark' : 'add'}
                     size={14}
-                    color={isSelected ? '#FFF' : THEME.colors.textSecondary}
+                    color={isSelected ? THEME.colors.dark : THEME.colors.textSecondary}
                     style={{ marginRight: 4 }}
                   />
                   <Text style={[styles.symptomText, isSelected && styles.symptomTextActive]}>
@@ -250,7 +250,7 @@ export default function BookVisitScreen() {
 
         <InputField
           label="Detailed Description of Condition *"
-          placeholder="Describe when symptoms began, fever progression, or specific concerns..."
+                      placeholder="When did it start? What feels worse?"
           value={conditionDescription}
           onChangeText={setConditionDescription}
           multiline
@@ -308,7 +308,7 @@ export default function BookVisitScreen() {
 
         <InputField
           label="Gate & Landmark Instructions"
-          placeholder="e.g. Black gate, ring left buzzer, opposite supermarket"
+                      placeholder="e.g. black gate, ring the left bell"
           value={accessNotes}
           onChangeText={setAccessNotes}
         />
@@ -393,7 +393,7 @@ export default function BookVisitScreen() {
         style={styles.submitBtn}
       />
       <Text style={styles.policyFootnote}>
-        Request remains pending until accepted by {doctor?.name || 'the physician'}. Free cancellation permitted prior to doctor departure.
+        {doctor?.name || 'Your doctor'} will confirm your request. You can cancel free before the doctor leaves.
       </Text>
     </ScrollView>
   );
@@ -415,7 +415,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
     marginTop: 2,
   },
@@ -509,7 +509,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   symptomTextActive: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontWeight: '700',
   },
   attachmentButton: {

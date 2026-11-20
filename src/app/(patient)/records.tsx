@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
   },
   icdCode: {
     fontSize: 11,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   sectionDivider: {
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
   },
   recsBox: {
     marginTop: 10,
-    backgroundColor: '#F0FDF4',
+    backgroundColor: '#FFF2F5',
     padding: 10,
     borderRadius: THEME.borderRadius.sm,
   },
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
   },
   rxCard: {
     marginBottom: THEME.spacing.md,
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#F0FCF9',
   },
   rxHeader: {
     flexDirection: 'row',
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
   rxBadge: {
     fontSize: 11,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   rxDate: {
     fontSize: 11,
@@ -394,8 +394,8 @@ const styles = StyleSheet.create({
   },
   labCard: {
     marginBottom: THEME.spacing.md,
-    backgroundColor: '#F0FDFA',
-    borderColor: '#99F6E4',
+    backgroundColor: '#F0FCF9',
+    borderColor: '#B8F4E8',
   },
   labHeader: {
     flexDirection: 'row',
@@ -410,7 +410,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   labTagText: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 9,
     fontWeight: '800',
   },
@@ -435,7 +435,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderTopWidth: 1,
-    borderColor: '#CCFBF1',
+    borderColor: '#B8F4E8',
     paddingTop: 8,
   },
   doctorSign: {
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
   },
   viewPdfText: {
     fontSize: 12,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
 });

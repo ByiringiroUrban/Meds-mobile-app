@@ -76,9 +76,9 @@ export default function OtpVerificationScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>Verify Your Email</Text>
         <Text style={styles.subtitle}>
-          We emailed a 6-digit one-time code to{' '}
-          <Text style={styles.destHighlight}>{destination || 'your registered address'}</Text>. It
-          expires in 10 minutes.
+          We sent a 6-digit code to{' '}
+          <Text style={styles.destHighlight}>{destination || 'your email address'}</Text>. It expires
+          in 10 minutes.
         </Text>
       </View>
 
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   noticeText: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontSize: 13,
     fontWeight: '600',
   },
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
   },
   resendLink: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   footerRow: {
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   },
   footerLink: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
 });

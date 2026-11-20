@@ -260,8 +260,7 @@ export default function OnlineConsultationScreen() {
                   onPress={handleSendRx}
                 />
                 <Text style={styles.modalHint}>
-                  The patient sees it immediately in their dashboard and medical records — no need
-                  to leave the call.
+                  The patient gets it right away in their records.
                 </Text>
               </View>
             </ScrollView>
@@ -275,7 +274,7 @@ export default function OnlineConsultationScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#202124',
+    backgroundColor: '#183B45',
   },
   doctorBar: {
     flexDirection: 'row',
@@ -283,7 +282,7 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    backgroundColor: '#292A2D',
+    backgroundColor: '#22454F',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255,255,255,0.08)',
   },
@@ -307,7 +306,7 @@ const styles = StyleSheet.create({
     borderRadius: 999,
   },
   rxButtonText: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 12,
     fontWeight: '800',
   },

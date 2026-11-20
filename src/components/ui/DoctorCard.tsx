@@ -37,7 +37,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({
               <Ionicons
                 name="checkmark-circle"
                 size={17}
-                color={THEME.colors.primary}
+                color={THEME.colors.primaryDark}
                 style={{ marginLeft: 5 }}
               />
             )}
@@ -62,7 +62,7 @@ export const DoctorCard: React.FC<DoctorCardProps> = ({
       <View style={styles.districtChipsRow}>
         {doctor.coverageDistricts.map((district) => (
           <View key={district} style={styles.districtChip}>
-            <Ionicons name="location-sharp" size={12} color={THEME.colors.primary} style={{ marginRight: 3 }} />
+            <Ionicons name="location-sharp" size={12} color={THEME.colors.primaryDark} style={{ marginRight: 3 }} />
             <Text style={styles.districtText}>{district}</Text>
           </View>
         ))}
@@ -126,13 +126,13 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   verifiedCheck: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 10,
     fontWeight: '800',
   },
   specialty: {
     fontSize: THEME.typography.sizes.sm,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
     marginTop: 2,
   },
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     borderRadius: THEME.borderRadius.md,
   },
   bookBtnText: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 13,
     fontWeight: '600',
   },

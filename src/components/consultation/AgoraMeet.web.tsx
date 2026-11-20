@@ -24,7 +24,7 @@ export function AgoraMeet({ html, onMessage }: AgoraMeetProps) {
     () =>
       React.createElement('iframe' as any, {
         srcDoc: html,
-        title: 'HomeCare video consultation',
+        title: 'MEDS Healthcare video consultation',
         allow: 'camera; microphone; autoplay; fullscreen; display-capture',
         allowFullScreen: true,
         style: {

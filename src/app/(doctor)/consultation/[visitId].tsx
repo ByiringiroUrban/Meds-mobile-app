@@ -313,7 +313,7 @@ export default function DoctorConsultationWorkspaceScreen() {
           onPress={() => setIsLabRequired(!isLabRequired)}
         >
           <View style={[styles.checkbox, isLabRequired && styles.checkboxActive]}>
-            {isLabRequired && <Ionicons name="checkmark" size={14} color="#FFF" />}
+            {isLabRequired && <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />}
           </View>
           <Text style={styles.checkboxText}>Laboratory specimen tests required</Text>
         </Pressable>
@@ -331,10 +331,10 @@ export default function DoctorConsultationWorkspaceScreen() {
               onPress={() => setSampleCollected(!sampleCollected)}
             >
               <View style={[styles.checkbox, sampleCollected && styles.checkboxActive]}>
-                {sampleCollected && <Ionicons name="checkmark" size={14} color="#FFF" />}
+                {sampleCollected && <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />}
               </View>
               <Text style={styles.checkboxText}>
-                Blood / Swab specimen collected on-site at patient residence
+                Blood or swab sample collected at home
               </Text>
             </Pressable>
           </View>
@@ -343,22 +343,22 @@ export default function DoctorConsultationWorkspaceScreen() {
 
       {/* Direct Results Publication Toggle (FR-7.1) */}
       <Card style={styles.sectionCard}>
-        <Text style={styles.sectionTitle}>5. Publish Laboratory Results Immediately</Text>
+        <Text style={styles.sectionTitle}>5. Publish Lab Results Now</Text>
         <Pressable
           style={styles.checkboxRow}
           onPress={() => setPublishResultNow(!publishResultNow)}
         >
           <View style={[styles.checkbox, publishResultNow && styles.checkboxActive]}>
-            {publishResultNow && <Ionicons name="checkmark" size={14} color="#FFF" />}
+            {publishResultNow && <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />}
           </View>
           <Text style={styles.checkboxText}>
-            Upload and publish validated laboratory result document to patient now
+            Share the lab results with the patient now
           </Text>
         </Pressable>
 
         {publishResultNow && (
           <InputField
-            label="Diagnostic Summary Findings for PDF"
+            label="Findings for the PDF"
             value={labFindingsSummary}
             onChangeText={setLabFindingsSummary}
             multiline
@@ -492,7 +492,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.colors.primary,
   },
   checkMark: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 11,
     fontWeight: '800',
   },

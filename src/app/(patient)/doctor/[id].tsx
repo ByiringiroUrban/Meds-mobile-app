@@ -16,6 +16,7 @@ import { formatMoney, currencyOf } from '../../../utils/money';
 import { patientService } from '../../../services/api';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
+import { Flag } from '../../../components/ui/Flag';
 
 export default function DoctorDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -51,14 +52,17 @@ export default function DoctorDetailScreen() {
         <View style={styles.nameRow}>
           <Text style={styles.doctorName}>{doctor.name}</Text>
           {doctor.verificationStatus === 'approved' && (
-            <Ionicons name="checkmark-circle" size={18} color={THEME.colors.primary} style={{ marginLeft: 6 }} />
+            <Ionicons name="checkmark-circle" size={18} color={THEME.colors.primaryDark} style={{ marginLeft: 6 }} />
           )}
         </View>
         <Text style={styles.specialty}>{doctor.specialty}</Text>
         <Text style={styles.licenseText}>License: {doctor.licenseNumber}</Text>
-        <Text style={styles.licenseText}>
-          {getCountryConfig(doctor.country).flag} {doctor.city}, {getCountryConfig(doctor.country).name}
-        </Text>
+        <View style={styles.locationRow}>
+          <Flag country={getCountryConfig(doctor.country).code} size="md" />
+          <Text style={[styles.licenseText, styles.locationText]}>
+            {doctor.city}, {getCountryConfig(doctor.country).name}
+          </Text>
+        </View>
 
         <View style={styles.ratingRow}>
           <Ionicons name="star" size={14} color="#F59E0B" />
@@ -212,13 +216,13 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   checkIcon: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 11,
     fontWeight: '800',
   },
   specialty: {
     fontSize: 14,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
     marginTop: 2,
   },
@@ -226,6 +230,15 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: THEME.colors.textMuted,
     marginTop: 2,
+  },
+  locationRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 3,
+  },
+  locationText: {
+    marginTop: 0,
   },
   ratingRow: {
     flexDirection: 'row',
@@ -258,7 +271,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginBottom: THEME.spacing.md,
     backgroundColor: THEME.colors.primarySoft,
-    borderColor: '#CCFBF1',
+    borderColor: '#B8F4E8',
   },
   feeCol: {
     alignItems: 'center',
@@ -277,7 +290,7 @@ const styles = StyleSheet.create({
   feeDivider: {
     width: 1,
     height: 32,
-    backgroundColor: '#99F6E4',
+    backgroundColor: '#B8F4E8',
   },
   section: {
     backgroundColor: THEME.colors.surface,
@@ -304,7 +317,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   bulletPoint: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontSize: 16,
     marginRight: 6,
     lineHeight: 18,

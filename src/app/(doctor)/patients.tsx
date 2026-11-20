@@ -37,15 +37,15 @@ export default function DoctorPatientsScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.headerTitle}>Assigned Patient Directory</Text>
+      <Text style={styles.headerTitle}>My Patients</Text>
       <Text style={styles.headerSubtitle}>
-        Doctors have access only to patients with whom they have an active or completed home visit appointment (NFR-2.3 Access Control).
+        You only see patients who booked a visit with you.
       </Text>
 
       {assignedPatients.length === 0 ? (
         <Card style={styles.emptyCard}>
           <View style={styles.emptyIconCircle}>
-            <Ionicons name="people-outline" size={36} color={THEME.colors.primary} />
+            <Ionicons name="people-outline" size={36} color={THEME.colors.primaryDark} />
           </View>
           <Text style={styles.emptyTitle}>No patients assigned yet</Text>
           <Text style={styles.emptyText}>Patients who book visits with you will appear here.</Text>
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 18,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   nameCol: {
     flex: 1,

@@ -33,20 +33,20 @@ export const Badge: React.FC<BadgeProps> = ({ status, label, size = 'sm' }) => {
         };
       case 'on_the_way':
         return {
-          bg: '#E0E7FF',
-          text: '#3730A3',
+          bg: THEME.colors.badgeActiveBg,
+          text: THEME.colors.badgeActiveText,
           defaultLabel: 'On the Way',
         };
       case 'arrived':
         return {
-          bg: '#C7D2FE',
-          text: '#312E81',
+          bg: '#D8FBF3',
+          text: '#0B5E55',
           defaultLabel: 'Doctor Arrived',
         };
       case 'in_consultation':
         return {
-          bg: '#EDE9FE',
-          text: '#5B21B6',
+          bg: '#E3EEF1',
+          text: '#183B45',
           defaultLabel: 'In Consultation',
         };
       case 'completed':

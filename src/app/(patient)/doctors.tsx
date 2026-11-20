@@ -199,7 +199,7 @@ export default function DoctorDiscoveryScreen() {
             onPress={() => setOnlineOnly(!onlineOnly)}
           >
             <View style={[styles.checkbox, onlineOnly && styles.checkboxActive]}>
-              {onlineOnly && <Ionicons name="checkmark" size={14} color="#FFF" />}
+              {onlineOnly && <Ionicons name="checkmark" size={14} color={THEME.colors.dark} />}
             </View>
             <Text style={styles.switchLabel}>Show only specialists available right now</Text>
           </Pressable>
@@ -221,12 +221,11 @@ export default function DoctorDiscoveryScreen() {
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <View style={styles.emptyIconCircle}>
-              <Ionicons name="medkit-outline" size={38} color={THEME.colors.primary} />
+              <Ionicons name="medkit-outline" size={38} color={THEME.colors.primaryDark} />
             </View>
             <Text style={styles.emptyTitle}>No matching doctors found</Text>
             <Text style={styles.emptySubtitle}>
-              Try adjusting the specialty or district filter to discover available physicians in{' '}
-              {country.name}.
+              Try another specialty or district in {country.name}.
             </Text>
             <Button
               title="Clear Filters"
@@ -299,7 +298,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   filterToggleTextActive: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   marketPicker: {
@@ -329,7 +328,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   pillTextActive: {
-    color: '#FFF',
+    color: THEME.colors.dark,
   },
   filterSheet: {
     backgroundColor: THEME.colors.surface,
@@ -383,7 +382,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   optionTextActive: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   switchRow: {
@@ -407,7 +406,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.colors.primary,
   },
   checkMark: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 12,
     fontWeight: '800',
   },

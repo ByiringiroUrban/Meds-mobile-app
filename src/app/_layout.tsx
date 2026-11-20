@@ -80,7 +80,7 @@ export default function RootLayout() {
           </View>
         </View>
 
-        {/* Animated HomeCare Brand Splash Preloader */}
+        {/* Animated MEDS Healthcare Brand Splash Preloader */}
         {showSplash && <SplashPreloader onFinish={() => setShowSplash(false)} />}
       </QueryClientProvider>
     </SafeAreaProvider>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: THEME.colors.background,
   },
   demoBar: {
-    backgroundColor: '#1E293B',
+    backgroundColor: '#183B45',
     paddingHorizontal: 12,
     paddingVertical: 6,
     flexDirection: 'row',
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   roleTag: {
-    color: '#38BDF8',
+    color: '#72E8D2',
     fontSize: 11,
     fontWeight: '700',
   },
@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   actionBtn: {
-    backgroundColor: '#334155',
+    backgroundColor: '#2A5560',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 4,
   },
   actionText: {
-    color: '#E2E8F0',
+    color: '#E5E7EB',
     fontSize: 10,
     fontWeight: '600',
   },

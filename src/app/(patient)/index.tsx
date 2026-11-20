@@ -83,11 +83,13 @@ export default function PatientHomeScreen() {
       >
         {/* Brand Banner with Official Logo */}
         <View style={styles.brandRow}>
-          <Image
-            source={require('../../../assets/homecare-logo.png')}
-            style={styles.logoImage}
-            resizeMode="contain"
-          />
+          <View style={styles.logoWrap}>
+            <Image
+              source={require('../../../assets/meds-logo.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+          </View>
           <Pressable
             style={styles.notifBtn}
             onPress={() => router.push('/(patient)/notifications')}
@@ -101,7 +103,7 @@ export default function PatientHomeScreen() {
           <View style={styles.headerLeft}>
             <Text style={styles.greeting}>Muraho, {currentUser?.name?.split(' ')[0] || 'Patient'}</Text>
             <View style={styles.locationRow}>
-              <Ionicons name="location-sharp" size={13} color={THEME.colors.primary} style={{ marginRight: 3 }} />
+              <Ionicons name="location-sharp" size={13} color={THEME.colors.primaryDark} style={{ marginRight: 3 }} />
               <Text style={styles.locationText} numberOfLines={1}>
                 {patientProfile?.district
                   ? `${patientProfile.district}, ${patientProfile.city || country.capitalCity}`
@@ -126,7 +128,7 @@ export default function PatientHomeScreen() {
             onPress={() => router.push('/(patient)/doctors')}
           >
             <Ionicons name="search-outline" size={18} color={THEME.colors.textMuted} style={{ marginRight: 8 }} />
-            <Text style={styles.searchBarPlaceholder}>Find specialist, symptom, or district...</Text>
+            <Text style={styles.searchBarPlaceholder}>Search doctors, symptoms or district</Text>
           </Pressable>
         </View>
 
@@ -134,7 +136,7 @@ export default function PatientHomeScreen() {
         {upcomingVisit && (
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>Upcoming Home Consultation</Text>
+              <Text style={styles.sectionTitle}>Upcoming Visit</Text>
               <Pressable onPress={() => router.push('/(patient)/visits')}>
                 <Text style={styles.sectionAction}>All Visits ›</Text>
               </Pressable>
@@ -143,7 +145,7 @@ export default function PatientHomeScreen() {
               visit={upcomingVisit}
               viewerRole="patient"
               onPress={() => router.push(`/(patient)/visit/${upcomingVisit.id}` as any)}
-              actionLabel="View Status Timeline"
+              actionLabel="Track Visit"
               onActionPress={() => router.push(`/(patient)/visit/${upcomingVisit.id}` as any)}
             />
           </View>
@@ -209,7 +211,7 @@ export default function PatientHomeScreen() {
                 }
               >
                 <View style={styles.specIconCircle}>
-                  <Ionicons name="medkit-outline" size={18} color={THEME.colors.primary} />
+                  <Ionicons name="medkit-outline" size={18} color={THEME.colors.primaryDark} />
                 </View>
                 <Text style={styles.specName} numberOfLines={1}>{spec.name}</Text>
                 <Text style={styles.specCount}>{spec.doctorCount} doctors</Text>
@@ -270,9 +272,16 @@ const styles = StyleSheet.create({
     paddingTop: THEME.spacing.sm,
     paddingBottom: 4,
   },
+  logoWrap: {
+    backgroundColor: THEME.colors.surface,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: THEME.colors.border,
+    padding: 5,
+  },
   logoImage: {
-    width: 145,
-    height: 42,
+    width: 42,
+    height: 45,
   },
   header: {
     flexDirection: 'row',
@@ -334,7 +343,7 @@ const styles = StyleSheet.create({
   },
   sectionAction: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   searchBarContainer: {
@@ -396,7 +405,7 @@ const styles = StyleSheet.create({
     marginTop: 1,
   },
   rxCard: {
-    backgroundColor: '#F8FAFC',
+    backgroundColor: '#F0FCF9',
     borderWidth: 1,
     borderColor: THEME.colors.border,
     borderRadius: THEME.borderRadius.lg,
@@ -411,7 +420,7 @@ const styles = StyleSheet.create({
   rxCardBadge: {
     fontSize: 11,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   rxCardDate: {
     fontSize: 11,
@@ -439,7 +448,7 @@ const styles = StyleSheet.create({
   },
   rxHint: {
     fontSize: 11,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
     marginTop: 8,
   },

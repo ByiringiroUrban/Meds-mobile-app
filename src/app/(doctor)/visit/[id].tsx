@@ -101,7 +101,7 @@ export default function DoctorVisitCockpitScreen() {
       <Card style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>Residence Destination ({visit.district})</Text>
         <View style={styles.addressRow}>
-          <Ionicons name="location-outline" size={18} color={THEME.colors.primary} style={{ marginRight: 6 }} />
+          <Ionicons name="location-outline" size={18} color={THEME.colors.primaryDark} style={{ marginRight: 6 }} />
           <Text style={styles.addressText}>{visit.visitAddress}</Text>
         </View>
         <Text style={styles.districtText}>District: {visit.district}</Text>
@@ -140,15 +140,15 @@ export default function DoctorVisitCockpitScreen() {
 
       {/* Step-by-Step Status Transition Controls */}
       <Card style={styles.statusCockpitCard}>
-        <Text style={styles.sectionTitle}>Visit Execution State Controls</Text>
+        <Text style={styles.sectionTitle}>Update Visit Status</Text>
         <Text style={styles.cockpitDesc}>
-          Advance the visit stage in real time to update the patient and dispatch notifications:
+          Tap each step as you go. The patient is notified right away.
         </Text>
 
         <View style={styles.stateButtons}>
           {visit.status === 'confirmed' && (
             <Button
-              title="1. I Am On The Way (Depart Now)"
+              title="1. I'm on my way"
               onPress={() => handleTransitionStatus('on_the_way')}
               loading={updating}
             />
@@ -156,7 +156,7 @@ export default function DoctorVisitCockpitScreen() {
 
           {visit.status === 'on_the_way' && (
             <Button
-              title="2. I Have Arrived At Gate / Residence"
+              title="2. I've arrived"
               variant="secondary"
               onPress={() => handleTransitionStatus('arrived')}
               loading={updating}
@@ -165,7 +165,7 @@ export default function DoctorVisitCockpitScreen() {
 
           {visit.status === 'arrived' && (
             <Button
-              title="3. Begin Home Medical Consultation"
+              title="3. Start consultation"
               onPress={() => handleTransitionStatus('in_consultation')}
               loading={updating}
             />
@@ -173,7 +173,7 @@ export default function DoctorVisitCockpitScreen() {
 
           {['in_consultation', 'completed'].includes(visit.status) && (
             <Button
-              title="Open Clinical Consultation Workspace"
+              title="Open Consultation"
               size="lg"
               onPress={() => router.push(`/(doctor)/consultation/${visit.id}` as any)}
               style={styles.workspaceBtn}
@@ -182,7 +182,7 @@ export default function DoctorVisitCockpitScreen() {
 
           {visit.status === 'in_consultation' && (
             <Button
-              title="Mark Home Visit Completed"
+              title="Complete Visit"
               variant="outline"
               onPress={() => handleTransitionStatus('completed')}
               loading={updating}
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   visitTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   patientHero: {
     fontSize: 20,
@@ -290,8 +290,8 @@ const styles = StyleSheet.create({
     color: THEME.colors.textPrimary,
   },
   statusCockpitCard: {
-    backgroundColor: '#F0FDFA',
-    borderColor: '#99F6E4',
+    backgroundColor: '#F0FCF9',
+    borderColor: '#B8F4E8',
   },
   cockpitDesc: {
     fontSize: 12,

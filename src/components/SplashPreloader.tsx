@@ -1,4 +1,4 @@
-// Ultra-premium animated splash & branded preloader for HomeCare East Africa
+// Animated splash & branded preloader for MEDS Healthcare
 import React, { useEffect, useRef } from 'react';
 import {
   View,
@@ -201,7 +201,7 @@ export const SplashPreloader: React.FC<SplashPreloaderProps> = ({
           ]}
         >
           <Image
-            source={require('../../assets/homecare-logo.png')}
+            source={require('../../assets/meds-logo.png')}
             style={styles.logoImage}
             resizeMode="contain"
           />
@@ -222,7 +222,7 @@ export const SplashPreloader: React.FC<SplashPreloaderProps> = ({
             <Text style={styles.badgeLabel}>NATIONALLY LICENSED SPECIALISTS</Text>
           </View>
 
-          <Text style={styles.appTitle}>HomeCare</Text>
+          <Text style={styles.appTitle}>MEDS Healthcare</Text>
           <Text style={styles.tagline}>Doctor Home Consultations • East Africa</Text>
 
           {/* Smooth modern progress indicator bar */}
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     width: 280,
     height: 280,
     borderRadius: 140,
-    backgroundColor: '#F0FDFA',
+    backgroundColor: '#F0FCF9',
     opacity: 0.8,
   },
   bottomBackdropCircle: {
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
     width: 260,
     height: 260,
     borderRadius: 130,
-    backgroundColor: '#F0FDF4',
+    backgroundColor: '#FFF2F5',
     opacity: 0.7,
   },
   centerContainer: {
@@ -299,29 +299,29 @@ const styles = StyleSheet.create({
     height: 220,
     borderRadius: 110,
     borderWidth: 2,
-    borderColor: '#99F6E4',
-    backgroundColor: '#CCFBF133',
+    borderColor: '#B8F4E8',
+    backgroundColor: '#72E8D233',
   },
   pulseRingSecondary: {
     width: 250,
     height: 250,
     borderRadius: 125,
-    borderColor: '#A7F3D0',
-    backgroundColor: '#D1FAE522',
+    borderColor: '#F7C7D3',
+    backgroundColor: '#E2406522',
   },
   logoContainer: {
-    width: 170,
-    height: 120,
+    width: 168,
+    height: 178,
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
+    borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 12,
+    padding: 14,
     borderWidth: 1,
-    borderColor: '#E2E8F0',
+    borderColor: '#E5E7EB',
     ...Platform.select({
       ios: {
-        shadowColor: '#0F766E',
+        shadowColor: '#183B45',
         shadowOffset: { width: 0, height: 12 },
         shadowOpacity: 0.16,
         shadowRadius: 24,
@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
         elevation: 10,
       },
       default: {
-        shadowColor: '#0F766E',
+        shadowColor: '#183B45',
         shadowOffset: { width: 0, height: 12 },
         shadowOpacity: 0.16,
         shadowRadius: 24,
@@ -338,8 +338,8 @@ const styles = StyleSheet.create({
     }),
   },
   logoImage: {
-    width: 150,
-    height: 90,
+    width: 140,
+    height: 151,
   },
   textContainer: {
     alignItems: 'center',
@@ -350,12 +350,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
-    backgroundColor: '#F0FDFA',
+    backgroundColor: '#F0FCF9',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: '#99F6E4',
+    borderColor: '#B8F4E8',
     marginBottom: 10,
   },
   badgeLabel: {
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
   appTitle: {
     fontSize: 28,
     fontWeight: '900',
-    color: THEME.colors.textPrimary,
+    color: THEME.colors.dark,
     letterSpacing: -0.5,
   },
   tagline: {
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
   progressBarBg: {
     width: '68%',
     height: 5,
-    backgroundColor: '#E2E8F0',
+    backgroundColor: '#DCEFEA',
     borderRadius: 3,
     overflow: 'hidden',
   },

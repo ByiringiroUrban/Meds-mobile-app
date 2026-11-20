@@ -87,14 +87,14 @@ export default function ForgotPasswordScreen() {
         <Text style={styles.title}>{step === 'done' ? 'Password Updated' : 'Reset Password'}</Text>
         <Text style={styles.subtitle}>
           {step === 'request'
-            ? 'Enter the email or phone number on your account and we will email you a 6-digit reset code.'
+            ? 'Enter your email or phone and we will send a 6-digit code.'
             : step === 'reset'
             ? info?.destination
               ? `We emailed a 6-digit code to ${info.destination}. It expires in ${
                   info.expiresInMinutes || 10
                 } minutes.`
-              : 'If the account exists, a 6-digit code has been emailed to the registered address.'
-            : 'Your new password is active. Sign in with it to continue.'}
+              : 'If that account exists, we sent a code to its email.'
+            : 'Your password is updated. Sign in to continue.'}
         </Text>
       </View>
 
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   },
   resendLink: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   footerRow: {
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
   },
   footerLink: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   successBox: {

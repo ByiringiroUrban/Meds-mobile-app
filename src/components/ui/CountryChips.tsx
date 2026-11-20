@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { COUNTRY_LIST, SupportedCountry, THEME } from '../../constants/theme';
+import { Flag } from './Flag';
 
 interface CountryChipsProps {
   value: SupportedCountry;
@@ -26,7 +27,7 @@ export const CountryChips: React.FC<CountryChipsProps> = ({ value, onChange, lab
             onPress={() => onChange(country.code)}
             style={[styles.chip, active && styles.chipActive]}
           >
-            <Text style={styles.flag}>{country.flag}</Text>
+            <Flag country={country.code} style={styles.flag} />
             <Text style={[styles.chipText, active && styles.chipTextActive]}>
               {country.name}
             </Text>
@@ -68,8 +69,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.colors.primary,
   },
   flag: {
-    fontSize: 14,
-    marginRight: 5,
+    marginRight: 6,
   },
   chipText: {
     fontSize: 12,
@@ -77,6 +77,6 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   chipTextActive: {
-    color: '#FFF',
+    color: THEME.colors.dark,
   },
 });

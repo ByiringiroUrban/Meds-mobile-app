@@ -66,7 +66,7 @@ export default function PayVisitScreen() {
         phoneNumber: phone,
         provider,
         reference: visitId || undefined,
-        customerMessage: 'HomeCare consultation',
+        customerMessage: 'MEDS Healthcare consultation',
       }),
     onSuccess: (record) => {
       setDeposit(record);
@@ -136,7 +136,7 @@ export default function PayVisitScreen() {
 
           {configQuery.isLoading ? (
             <View style={styles.loadingRow}>
-              <ActivityIndicator color={THEME.colors.primary} />
+              <ActivityIndicator color={THEME.colors.primaryDark} />
               <Text style={styles.loadingText}>Loading providers…</Text>
             </View>
           ) : null}
@@ -195,8 +195,7 @@ export default function PayVisitScreen() {
           />
 
           <Text style={styles.footnote}>
-            You will receive a prompt on your phone. Enter your mobile money PIN to approve the
-            payment.
+            Approve the prompt on your phone with your mobile money PIN.
           </Text>
 
           <Button
@@ -211,7 +210,7 @@ export default function PayVisitScreen() {
           <Card style={styles.statusCard}>
             {!isFinal ? (
               <>
-                <ActivityIndicator color={THEME.colors.primary} />
+                <ActivityIndicator color={THEME.colors.primaryDark} />
                 <Text style={styles.statusTitle}>Waiting for your approval</Text>
                 <Text style={styles.statusText}>
                   Approve the {formatMoney(amount, currency)} prompt on {phone}. This screen updates
@@ -308,7 +307,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 14,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
     marginTop: 2,
   },
@@ -365,7 +364,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   providerTextActive: {
-    color: '#FFF',
+    color: THEME.colors.dark,
   },
   providerStatus: {
     fontSize: 10,
@@ -410,7 +409,7 @@ const styles = StyleSheet.create({
   noticeTitle: {
     fontSize: 13,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   noticeText: {
     fontSize: 12,

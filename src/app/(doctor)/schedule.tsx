@@ -61,7 +61,7 @@ export default function DoctorScheduleScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.headerTitle}>Availability & Slot Schedule</Text>
       <Text style={styles.headerSubtitle}>
-        Define your working windows. Booked slots are automatically reserved.
+                  Set the hours you work. Booked slots are blocked automatically.
       </Text>
 
       {/* Routine Working Days & Hours */}
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   dayTextActive: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontWeight: '700',
   },
   hoursText: {
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   },
   slotTime: {
     fontSize: 12,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   slotStatus: {

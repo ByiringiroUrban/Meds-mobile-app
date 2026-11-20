@@ -1,4 +1,4 @@
-// Asynchronous Service Contracts for HomeCare
+// Asynchronous Service Contracts for MEDS Healthcare
 // Designed for seamless transition to future Node.js REST API
 import {
   User,
@@ -866,7 +866,7 @@ export const doctorService: DoctorService = {
       id: resultId,
       status: 'available',
       pdfUrl: `https://homecare.rw/fictional-reports/${resultId}-report.pdf`,
-      pdfFileName: `HomeCare_${resultData.patientName.replace(/\s+/g, '_')}_LabResult_${resultId}.pdf`,
+      pdfFileName: `MEDS_${resultData.patientName.replace(/\s+/g, '_')}_LabResult_${resultId}.pdf`,
       fileSizeBytes: 215400,
       publishedAt: new Date().toISOString(),
       isViewedByPatient: false,

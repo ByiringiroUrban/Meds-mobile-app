@@ -65,11 +65,13 @@ export default function DoctorDashboardScreen() {
       >
         {/* Doctor Brand & Header Banner */}
         <View style={styles.brandRow}>
-          <Image
-            source={require('../../../assets/homecare-logo.png')}
-            style={styles.logoImage}
-            resizeMode="contain"
-          />
+          <View style={styles.logoWrap}>
+            <Image
+              source={require('../../../assets/meds-logo.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+          </View>
           <Badge status={doctorProfile?.verificationStatus || 'pending'} size="md" />
         </View>
 
@@ -87,7 +89,7 @@ export default function DoctorDashboardScreen() {
           <View style={styles.verificationNotice}>
             <Text style={styles.verificationNoticeTitle}>Credentials Pending Review</Text>
             <Text style={styles.verificationNoticeText}>
-              Your license is undergoing administrative verification. You will be able to receive and accept home consultation requests once approved.
+              We are checking your license. You can accept home visits once approved.
             </Text>
           </View>
         )}
@@ -109,7 +111,7 @@ export default function DoctorDashboardScreen() {
             <Text style={styles.toggleSub}>
               {doctorProfile?.isOnline
                 ? `Visible in ${doctorProfile?.city || 'your city'} specialist search`
-                : 'Patients cannot book urgent visits'}
+                : 'You will not get new visit requests'}
             </Text>
           </View>
           <Switch
@@ -140,7 +142,7 @@ export default function DoctorDashboardScreen() {
         {pendingRequests.length > 0 && (
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>New Pending Visit Requests ({pendingRequests.length})</Text>
+              <Text style={styles.sectionTitle}>New Requests ({pendingRequests.length})</Text>
               <Pressable onPress={() => router.push('/(doctor)/requests')}>
                 <Text style={styles.sectionAction}>View All ›</Text>
               </Pressable>
@@ -161,7 +163,7 @@ export default function DoctorDashboardScreen() {
 
         {/* Active In-Progress Visits */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Active Visits Execution</Text>
+          <Text style={styles.sectionTitle}>Active Visits</Text>
           {activeVisits.length === 0 ? (
             <Card style={styles.emptyCard}>
               <Text style={styles.emptyText}>No active home visits currently underway.</Text>
@@ -173,7 +175,7 @@ export default function DoctorDashboardScreen() {
                 visit={visit}
                 viewerRole="doctor"
                 onPress={() => router.push(`/(doctor)/visit/${visit.id}` as any)}
-                actionLabel="Open Visit Cockpit"
+                actionLabel="Open Visit"
                 onActionPress={() => router.push(`/(doctor)/visit/${visit.id}` as any)}
               />
             ))
@@ -199,9 +201,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: THEME.spacing.xs,
   },
+  logoWrap: {
+    backgroundColor: THEME.colors.surface,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: THEME.colors.border,
+    padding: 5,
+  },
   logoImage: {
-    width: 145,
-    height: 42,
+    width: 42,
+    height: 45,
   },
   header: {
     flexDirection: 'row',
@@ -289,7 +298,7 @@ const styles = StyleSheet.create({
   metricNumber: {
     fontSize: 20,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   metricLabel: {
     fontSize: 11,
@@ -314,7 +323,7 @@ const styles = StyleSheet.create({
   },
   sectionAction: {
     fontSize: 12,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   emptyCard: {

@@ -27,11 +27,11 @@ export function buildMeetingHtml(config: MeetingConfig): string {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="color-scheme" content="dark" />
-<title>HomeCare Video Consultation</title>
+<title>MEDS Healthcare Video Consultation</title>
 <style>
   :root{
     --bg:#202124; --panel:#292a2d; --tile:#3c4043; --tile-2:#4a4d51; --text:#e8eaed;
-    --muted:#9aa0a6; --accent:#8ab4f8; --red:#ea4335; --green:#34a853;
+    --muted:#9aa0a6; --accent:#72E8D2; --red:#E24065; --green:#34a853;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--text);
@@ -61,7 +61,7 @@ export function buildMeetingHtml(config: MeetingConfig): string {
   .preview-label{position:absolute;left:10px;bottom:10px;background:rgba(32,33,36,.72);
     padding:4px 9px;border-radius:7px;font-size:11.5px}
   .lobby-controls{display:flex;justify-content:center;gap:14px}
-  .join-btn{width:100%;border:none;border-radius:26px;background:var(--accent);color:#202124;
+  .join-btn{width:100%;border:none;border-radius:26px;background:var(--accent);color:#183B45;
     font-size:15px;font-weight:600;padding:14px;cursor:pointer}
   .join-btn:disabled{opacity:.65}
   .join-btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(138,180,248,.4)}
@@ -127,7 +127,7 @@ export function buildMeetingHtml(config: MeetingConfig): string {
   .ctrl.off{background:#3f2a2a;color:#f28b82}
   .ctrl.end{background:var(--red);color:#fff;width:66px;border-radius:26px}
   .ctrl.people{position:relative}
-  .ctrl .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#202124;font-size:10px;
+  .ctrl .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#183B45;font-size:10px;
     font-weight:700;border-radius:10px;padding:1px 5px;border:2px solid var(--bg)}
   #fatal{position:absolute;inset:0;background:rgba(32,33,36,.96);display:flex;flex-direction:column;
     align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center;z-index:5}
@@ -148,7 +148,7 @@ export function buildMeetingHtml(config: MeetingConfig): string {
 <body>
   <section id="lobby">
     <div class="lobby-card">
-      <div class="eyebrow">HomeCare &middot; Online Consultation</div>
+      <div class="eyebrow">MEDS HEALTHCARE &middot; Online Consultation</div>
       <h1 id="lobby-title">Video consultation</h1>
       <p class="subline" id="lobby-sub">Secure end-to-end video room for this visit.</p>
 
@@ -188,7 +188,7 @@ export function buildMeetingHtml(config: MeetingConfig): string {
       <button class="icon-btn" id="btn-back" aria-label="Leave meeting"></button>
       <div class="titles">
         <div class="title" id="call-title">Video consultation</div>
-        <div class="sub" id="call-sub">HomeCare online consultation</div>
+        <div class="sub" id="call-sub">MEDS Healthcare online consultation</div>
       </div>
       <div class="chip" id="call-code">---</div>
       <div class="timer"><span class="dot"></span><span id="timer">00:00</span></div>

@@ -62,13 +62,15 @@ export default function LoginScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Image
-          source={require('../../../assets/homecare-logo.png')}
-          style={styles.logoImage}
-          resizeMode="contain"
-        />
+        <View style={styles.logoCard}>
+          <Image
+            source={require('../../../assets/meds-logo.png')}
+            style={styles.logoImage}
+            resizeMode="contain"
+          />
+        </View>
         <Text style={styles.title}>Welcome Back</Text>
-        <Text style={styles.subtitle}>Sign in to access your consultations and health records</Text>
+        <Text style={styles.subtitle}>Sign in to book visits and see your records</Text>
       </View>
 
       {errorMsg ? (
@@ -129,10 +131,19 @@ const styles = StyleSheet.create({
     marginBottom: THEME.spacing.lg,
     marginTop: THEME.spacing.sm,
   },
-  logoImage: {
-    width: 190,
-    height: 55,
+  logoCard: {
+    alignSelf: 'center',
+    backgroundColor: THEME.colors.surface,
+    borderRadius: 22,
+    borderWidth: 1,
+    borderColor: THEME.colors.border,
+    padding: 10,
     marginBottom: THEME.spacing.sm,
+    ...THEME.shadows.card,
+  },
+  logoImage: {
+    width: 92,
+    height: 99,
   },
   title: {
     fontSize: 24,
@@ -162,7 +173,7 @@ const styles = StyleSheet.create({
     marginBottom: THEME.spacing.lg,
   },
   forgotLink: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontSize: 13,
     fontWeight: '600',
   },
@@ -182,6 +193,6 @@ const styles = StyleSheet.create({
   signUpLink: {
     fontSize: 13,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
 });

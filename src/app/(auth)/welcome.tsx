@@ -21,11 +21,13 @@ export default function WelcomeScreen() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* App Branding with Official Logo */}
         <View style={styles.brandHeader}>
-          <Image
-            source={require('../../../assets/homecare-logo.png')}
-            style={styles.logoImage}
-            resizeMode="contain"
-          />
+          <View style={styles.logoCard}>
+            <Image
+              source={require('../../../assets/meds-logo.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+          </View>
           <Text style={styles.tagline}>{APP_CONFIG.tagline}</Text>
         </View>
 
@@ -36,22 +38,22 @@ export default function WelcomeScreen() {
         <View style={styles.heroSection}>
           <Text style={styles.heroHeadline}>Quality Healthcare Delivered to Your Home</Text>
           <Text style={styles.heroSubheadline}>
-            Connect with certified doctors across Rwanda, Kenya, Uganda, Tanzania, Burundi and South Sudan for in-person home consultations and lab collections.
+            Book verified doctors for home visits and lab tests across East Africa.
           </Text>
         </View>
 
         {/* Core Value Pills */}
         <View style={styles.benefitsRow}>
           <View style={styles.benefitPill}>
-            <Ionicons name="home-outline" size={16} color={THEME.colors.primary} />
+            <Ionicons name="home-outline" size={16} color={THEME.colors.primaryDark} />
             <Text style={styles.benefitPillText}>At Home</Text>
           </View>
           <View style={styles.benefitPill}>
-            <Ionicons name="shield-checkmark-outline" size={16} color={THEME.colors.primary} />
+            <Ionicons name="shield-checkmark-outline" size={16} color={THEME.colors.primaryDark} />
             <Text style={styles.benefitPillText}>Verified MDs</Text>
           </View>
           <View style={styles.benefitPill}>
-            <Ionicons name="document-text-outline" size={16} color={THEME.colors.primary} />
+            <Ionicons name="document-text-outline" size={16} color={THEME.colors.primaryDark} />
             <Text style={styles.benefitPillText}>Digital Rx</Text>
           </View>
         </View>
@@ -98,10 +100,18 @@ const styles = StyleSheet.create({
     paddingVertical: THEME.spacing.lg,
     paddingHorizontal: THEME.spacing.base,
   },
+  logoCard: {
+    backgroundColor: THEME.colors.surface,
+    borderRadius: 28,
+    borderWidth: 1,
+    borderColor: THEME.colors.border,
+    padding: 14,
+    marginBottom: THEME.spacing.md,
+    ...THEME.shadows.card,
+  },
   logoImage: {
-    width: 240,
-    height: 70,
-    marginBottom: THEME.spacing.xs,
+    width: 152,
+    height: 163,
   },
   tagline: {
     fontSize: 14,
@@ -141,7 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: THEME.colors.primarySoft,
-    borderColor: '#CCFBF1',
+    borderColor: '#B8F4E8',
     borderWidth: 1,
     paddingHorizontal: 12,
     paddingVertical: 7,
@@ -151,7 +161,7 @@ const styles = StyleSheet.create({
   benefitPillText: {
     fontSize: 12,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   authButtons: {
     paddingHorizontal: THEME.spacing.base,
@@ -177,6 +187,6 @@ const styles = StyleSheet.create({
   doctorLink: {
     fontSize: 13,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
 });

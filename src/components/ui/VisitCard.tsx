@@ -30,9 +30,9 @@ export const VisitCard: React.FC<VisitCardProps> = ({
     <Card style={styles.card} onPress={onPress}>
       <View style={styles.header}>
         <View style={styles.dateBadge}>
-          <Ionicons name="calendar-outline" size={14} color={THEME.colors.primary} />
+          <Ionicons name="calendar-outline" size={14} color={THEME.colors.primaryDark} />
           <Text style={styles.dateText}>{visit.scheduledDate}</Text>
-          <Ionicons name="time-outline" size={14} color={THEME.colors.primary} style={{ marginLeft: 4 }} />
+          <Ionicons name="time-outline" size={14} color={THEME.colors.primaryDark} style={{ marginLeft: 4 }} />
           <Text style={styles.timeText}>{visit.scheduledTime}</Text>
         </View>
         <Badge status={visit.status} size="sm" />
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   timeText: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
     fontSize: 13,
   },
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
   },
   detailsLink: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   actionBtn: {
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     borderRadius: THEME.borderRadius.sm,
   },
   actionBtnText: {
-    color: '#FFF',
+    color: THEME.colors.dark,
     fontSize: 12,
     fontWeight: '600',
   },

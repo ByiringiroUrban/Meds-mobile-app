@@ -145,11 +145,13 @@ export default function AdminConsoleScreen() {
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[THEME.colors.primary]} />}
       >
         <View style={styles.brandRow}>
-          <Image
-            source={require('../../../assets/homecare-logo.png')}
-            style={styles.logoImage}
-            resizeMode="contain"
-          />
+          <View style={styles.logoWrap}>
+            <Image
+              source={require('../../../assets/meds-logo.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+          </View>
           <View style={styles.brandActions}>
             <Pressable style={styles.iconBtn} onPress={handleResetDemo}>
               <Ionicons name="refresh-outline" size={20} color={THEME.colors.textPrimary} />
@@ -169,7 +171,7 @@ export default function AdminConsoleScreen() {
         <View style={styles.header}>
           <Text style={styles.greeting}>Platform Admin</Text>
           <View style={styles.locationRow}>
-            <Ionicons name="location-sharp" size={13} color={THEME.colors.primary} style={{ marginRight: 3 }} />
+            <Ionicons name="location-sharp" size={13} color={THEME.colors.primaryDark} style={{ marginRight: 3 }} />
             <Text style={styles.locationText}>East Africa Healthcare Network</Text>
           </View>
         </View>
@@ -183,10 +185,10 @@ export default function AdminConsoleScreen() {
               name="medkit-outline"
               size={36}
               iconSize={17}
-              color={activeTab === 'doctors' && doctorFilter !== 'pending' ? THEME.colors.textWhite : THEME.colors.primary}
+              color={activeTab === 'doctors' && doctorFilter !== 'pending' ? THEME.colors.dark : THEME.colors.primaryDark}
               backgroundColor={
                 activeTab === 'doctors' && doctorFilter !== 'pending'
-                  ? 'rgba(255,255,255,0.18)'
+                  ? 'rgba(24,59,69,0.10)'
                   : THEME.colors.primarySoft
               }
             />
@@ -238,14 +240,14 @@ export default function AdminConsoleScreen() {
               iconSize={17}
               color={
                 activeTab === 'complaints'
-                  ? THEME.colors.textWhite
+                  ? THEME.colors.dark
                   : pendingComplaintsCount > 0
                     ? THEME.colors.error
                     : THEME.colors.success
               }
               backgroundColor={
                 activeTab === 'complaints'
-                  ? 'rgba(255,255,255,0.18)'
+                  ? 'rgba(24,59,69,0.10)'
                   : pendingComplaintsCount > 0
                     ? THEME.colors.errorSoft
                     : THEME.colors.successSoft
@@ -275,8 +277,8 @@ export default function AdminConsoleScreen() {
               name="shield-checkmark-outline"
               size={36}
               iconSize={17}
-              color={activeTab === 'audit' ? THEME.colors.textWhite : THEME.colors.primary}
-              backgroundColor={activeTab === 'audit' ? 'rgba(255,255,255,0.18)' : THEME.colors.primarySoft}
+              color={activeTab === 'audit' ? THEME.colors.dark : THEME.colors.primaryDark}
+              backgroundColor={activeTab === 'audit' ? 'rgba(24,59,69,0.10)' : THEME.colors.primarySoft}
             />
             <Text style={[styles.summaryNumber, activeTab === 'audit' && styles.summaryTextActive]}>
               {auditLogs.length}
@@ -500,7 +502,7 @@ export default function AdminConsoleScreen() {
               <Card style={styles.emptyCard}>
                 <IconWell name="search-outline" size={48} iconSize={24} color={THEME.colors.textMuted} backgroundColor={THEME.colors.surfaceSubtle} />
                 <Text style={styles.emptyTitle}>No doctors match this filter</Text>
-                <Text style={styles.emptyText}>Switch filters or reset demo data to view registered clinicians.</Text>
+                <Text style={styles.emptyText}>            Try other filters or reset demo data.</Text>
               </Card>
             ) : (
               filteredDoctors.map((d) => (
@@ -517,14 +519,14 @@ export default function AdminConsoleScreen() {
                         <View style={styles.docNameRow}>
                           <Text style={styles.docName} numberOfLines={1}>{d.name}</Text>
                           {d.verificationStatus === 'approved' && (
-                            <Ionicons name="checkmark-circle" size={16} color={THEME.colors.primary} />
+                            <Ionicons name="checkmark-circle" size={16} color={THEME.colors.primaryDark} />
                           )}
                         </View>
                         <Badge status={d.verificationStatus} size="sm" />
                       </View>
                       <Text style={styles.docSpecialty}>{d.specialty}</Text>
                       <View style={styles.docMetaItem}>
-                        <Ionicons name="ribbon-outline" size={13} color={THEME.colors.primary} />
+                        <Ionicons name="ribbon-outline" size={13} color={THEME.colors.primaryDark} />
                         <Text style={styles.licenseNumberText}>{d.licenseNumber}</Text>
                       </View>
                     </View>
@@ -550,7 +552,7 @@ export default function AdminConsoleScreen() {
                     <View style={styles.districtChipsRow}>
                       {d.coverageDistricts.map((district) => (
                         <View key={district} style={styles.districtChip}>
-                          <Ionicons name="location-sharp" size={12} color={THEME.colors.primary} />
+                          <Ionicons name="location-sharp" size={12} color={THEME.colors.primaryDark} />
                           <Text style={styles.districtText}>{district}</Text>
                         </View>
                       ))}
@@ -570,7 +572,7 @@ export default function AdminConsoleScreen() {
                         style={[styles.docActionBtn, styles.approveBtn]}
                         onPress={() => handleUpdateDoctorStatus(d.userId, 'approved')}
                       >
-                        <Ionicons name="checkmark-circle" size={16} color="#FFFFFF" />
+                        <Ionicons name="checkmark-circle" size={16} color={THEME.colors.dark} />
                         <Text style={styles.docActionBtnTextWhite}>Approve</Text>
                       </Pressable>
                     )}
@@ -588,7 +590,7 @@ export default function AdminConsoleScreen() {
                         style={[styles.docActionBtn, styles.pendingBtn]}
                         onPress={() => handleUpdateDoctorStatus(d.userId, 'pending')}
                       >
-                        <Ionicons name="time-outline" size={16} color={THEME.colors.primary} />
+                        <Ionicons name="time-outline" size={16} color={THEME.colors.primaryDark} />
                         <Text style={styles.docActionBtnTextTeal}>Mark Pending</Text>
                       </Pressable>
                     )}
@@ -637,7 +639,7 @@ export default function AdminConsoleScreen() {
               <Card style={styles.emptyCard}>
                 <IconWell name="checkmark-circle-outline" size={48} iconSize={26} color={THEME.colors.success} backgroundColor={THEME.colors.successSoft} />
                 <Text style={styles.emptyTitle}>No complaints reported</Text>
-                <Text style={styles.emptyText}>All patient consultations are currently free of grievances.</Text>
+                <Text style={styles.emptyText}>            No complaints yet.</Text>
               </Card>
             ) : (
               filteredComplaints.map((c) => (
@@ -682,7 +684,7 @@ export default function AdminConsoleScreen() {
                     </View>
                   ) : (
                     <Pressable style={styles.resolveComplaintBtn} onPress={() => handleResolveComplaint(c.id)}>
-                      <Ionicons name="checkmark-done-outline" size={16} color="#FFFFFF" />
+                      <Ionicons name="checkmark-done-outline" size={16} color={THEME.colors.dark} />
                       <Text style={styles.resolveComplaintBtnText}>Resolve Complaint</Text>
                     </Pressable>
                   )}
@@ -700,7 +702,7 @@ export default function AdminConsoleScreen() {
                 <View style={{ flex: 1 }}>
                   <Text style={styles.auditDisclaimerTitle}>Law No. 058/2021 Compliance</Text>
                   <Text style={styles.auditDisclaimerText}>
-                    Mandatory audit logs for clinical notes, prescriptions, lab orders, and record access.
+                    Every view and change to clinical data is logged.
                   </Text>
                 </View>
               </View>
@@ -736,7 +738,7 @@ export default function AdminConsoleScreen() {
                       </Text>
                     </View>
                     <View style={styles.hashBadge}>
-                      <Ionicons name="finger-print-outline" size={13} color={THEME.colors.primary} />
+                      <Ionicons name="finger-print-outline" size={13} color={THEME.colors.primaryDark} />
                       <Text style={styles.hashText}>Verified</Text>
                     </View>
                   </View>
@@ -765,7 +767,7 @@ export default function AdminConsoleScreen() {
             );
           }}
         >
-          <Ionicons name="refresh-outline" size={16} color={THEME.colors.primary} />
+          <Ionicons name="refresh-outline" size={16} color={THEME.colors.primaryDark} />
           <Text style={styles.fullResetBtnText}>Reset demo to baseline</Text>
         </Pressable>
       </ScrollView>
@@ -793,9 +795,16 @@ const styles = StyleSheet.create({
     paddingTop: THEME.spacing.sm,
     paddingBottom: 4,
   },
+  logoWrap: {
+    backgroundColor: THEME.colors.surface,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: THEME.colors.border,
+    padding: 5,
+  },
   logoImage: {
-    width: 145,
-    height: 42,
+    width: 42,
+    height: 45,
   },
   brandActions: {
     flexDirection: 'row',
@@ -864,7 +873,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   summaryTextActive: {
-    color: THEME.colors.textWhite,
+    color: THEME.colors.dark,
   },
   tabContainer: {
     marginBottom: THEME.spacing.md,
@@ -894,7 +903,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textMuted,
   },
   tabLabelActive: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   tabBadge: {
@@ -915,7 +924,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   tabBadgeTextActive: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   tabBadgeTextWarn: {
     color: THEME.colors.warning,
@@ -1060,7 +1069,7 @@ const styles = StyleSheet.create({
     color: THEME.colors.textSecondary,
   },
   filterChipTextActive: {
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '700',
   },
   filterChipTextActiveWarning: {
@@ -1121,7 +1130,7 @@ const styles = StyleSheet.create({
   },
   docSpecialty: {
     fontSize: 13,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   licenseNumberText: {
@@ -1164,7 +1173,7 @@ const styles = StyleSheet.create({
   },
   districtText: {
     fontSize: 11,
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     fontWeight: '600',
   },
   docActions: {
@@ -1194,17 +1203,17 @@ const styles = StyleSheet.create({
   pendingBtn: {
     backgroundColor: THEME.colors.primarySoft,
     borderWidth: 1,
-    borderColor: '#99F6E4',
+    borderColor: '#B8F4E8',
   },
   docActionBtnTextWhite: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: THEME.colors.dark,
   },
   docActionBtnTextTeal: {
     fontSize: 12,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   complaintCard: {
     marginBottom: 12,
@@ -1287,11 +1296,11 @@ const styles = StyleSheet.create({
   resolveComplaintBtnText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: THEME.colors.dark,
   },
   auditDisclaimer: {
     backgroundColor: THEME.colors.primarySoft,
-    borderColor: '#99F6E4',
+    borderColor: '#B8F4E8',
     marginBottom: 12,
     padding: 12,
   },
@@ -1303,7 +1312,7 @@ const styles = StyleSheet.create({
   auditDisclaimerTitle: {
     fontSize: 13,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
     marginBottom: 2,
   },
   auditDisclaimerText: {
@@ -1331,7 +1340,7 @@ const styles = StyleSheet.create({
   auditActionText: {
     fontSize: 12,
     fontWeight: '800',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   auditEntityText: {
     fontSize: 11,
@@ -1384,7 +1393,7 @@ const styles = StyleSheet.create({
   hashText: {
     fontSize: 10,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
   emptyCard: {
     alignItems: 'center',
@@ -1429,13 +1438,13 @@ const styles = StyleSheet.create({
     marginTop: 16,
     backgroundColor: THEME.colors.primarySoft,
     borderWidth: 1,
-    borderColor: '#99F6E4',
+    borderColor: '#B8F4E8',
     paddingVertical: 12,
     borderRadius: THEME.borderRadius.md,
   },
   fullResetBtnText: {
     fontSize: 13,
     fontWeight: '700',
-    color: THEME.colors.primary,
+    color: THEME.colors.primaryDark,
   },
 });
